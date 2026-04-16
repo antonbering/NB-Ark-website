@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projekter — NB ark</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f0ede8;--ink:#1a1916;--ink-soft:#6b6b67;--red:#8c1a1a;--serif:'Instrument Serif',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:14px 48px;background:rgba(255,255,255,0.97);border-bottom:1px solid rgba(0,0,0,0.08);transition:max-width .45s cubic-bezier(.4,0,.2,1),border-radius .45s cubic-bezier(.4,0,.2,1),padding .45s cubic-bezier(.4,0,.2,1),box-shadow .45s cubic-bezier(.4,0,.2,1)}
+nav.pill{left:50%;right:auto;transform:translateX(-50%);width:760px;max-width:90vw;border-radius:999px;padding:8px 10px 8px 24px;box-shadow:0 4px 24px rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.1);top:14px}
+.nav-logo img{height:28px;display:block}
+.nav-links{display:flex;gap:2px;list-style:none}
+.nav-links a{font-size:14px;color:rgba(26,25,22,.7);text-decoration:none;padding:7px 14px;border-radius:999px;transition:background .2s,color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);background:rgba(0,0,0,.05)}
+.nav-links a.active{color:var(--red)}
+.nav-cta{background:var(--ink);color:#fff;border-radius:999px;padding:10px 20px;font-size:14px;font-weight:500;text-decoration:none;transition:background .2s;white-space:nowrap;margin-left:8px}
+.nav-cta:hover{background:var(--red)}
+
+/* HERO */
+.page-hero{padding:140px 64px 60px;text-align:center}
+.page-hero h1{font-family:var(--serif);font-size:clamp(48px,5vw,72px);font-weight:400;line-height:1.1;color:var(--ink);margin-bottom:16px}
+.page-hero h1 em{font-style:italic;color:var(--red)}
+.page-hero p{font-size:16px;color:var(--ink-soft);max-width:480px;margin:0 auto}
+
+
+
+/* GRID */
+.projects-grid{padding:0 48px 120px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.proj-card{break-inside:unset;margin-bottom:0;display:flex;flex-direction:column}.proj-card img{width:100%;height:260px;object-fit:cover;display:block}
+.proj-card{break-inside:avoid;margin-bottom:20px;display:block;text-decoration:none;color:inherit;border-radius:12px;overflow:hidden;background:#e0dbd0;position:relative;cursor:pointer;transition:transform .3s,box-shadow .3s}
+.proj-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.12)}
+.proj-card img{width:100%;display:block;transition:transform .7s,filter .4s;filter:brightness(.95)}
+.proj-card:hover img{transform:scale(1.04);filter:brightness(.7)}
+.proj-card-info{padding:16px 18px 18px;background:#fff}
+.proj-card-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:5px}
+.proj-card-name{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--ink);transition:color .2s}
+.proj-card:hover .proj-card-name{color:var(--red)}
+
+/* Rød linje */
+.proj-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--red);transition:width .45s}
+.proj-card:hover::after{width:100%}
+
+/* Hidden */
+.proj-card.hidden{display:none}
+
+/* FOOTER */
+footer{background:var(--ink);color:#fff;padding:56px 64px 40px}
+.footer-top{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:32px}
+.footer-logo img{height:28px;filter:brightness(10);opacity:.8;display:block;margin-bottom:16px}
+.footer-desc{font-size:13px;color:rgba(255,255,255,.4);line-height:1.8}
+.footer-col h4{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:14px;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,.22)}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo"><img src="https://nbark.dk/wp-content/themes/NBark_v9/images/logo.png" alt="NB ark"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projekter.html" class="active">Projekter</a></li>
+    <li><a href="tegnestuen.html">Tegnestuen</a></li>
+    <li><a href="byggeproces.html">Byggeproces</a></li>
+    <li><a href="nyheder.html">Nyheder</a></li>
+  </ul>
+  <a href="index.html#kontakt" class="nav-cta">Kontakt</a>
+</nav>
+
+<section class="page-hero">
+  <h1>Vores <em>projekter</em></h1>
+  <p>Et udvalg af de boliger og erhvervsbyggerier vi har tegnet, renoveret og tilbygget de seneste år.</p>
+</section>
+
+<div class="projects-grid">
+
+  <a href="#" class="proj-card" data-cat="nybyggeri tilbygning">
+    <img src="https://nbark.dk/wp-content/uploads/2024/12/Hyldageren-1.jpg" alt="Hyldageren">
+    <div class="proj-card-info"><div class="proj-card-tag">Tilbygning</div><div class="proj-card-name">Hyldageren</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="ombygning">
+    <img src="https://nbark.dk/wp-content/uploads/2024/11/Soloesevej-31.jpg" alt="Solösevej 31">
+    <div class="proj-card-info"><div class="proj-card-tag">Ombygning</div><div class="proj-card-name">Solösevej 31</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="tilbygning">
+    <img src="https://nbark.dk/wp-content/uploads/2024/08/Poppelvej-10.jpg" alt="Poppelvej 10">
+    <div class="proj-card-info"><div class="proj-card-tag">Tilbygning</div><div class="proj-card-name">Poppelvej 10</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="nybyggeri">
+    <img src="https://nbark.dk/wp-content/uploads/2024/08/Gl.-Hareskovvej-275.jpg" alt="Gl. Hareskovvej 275">
+    <div class="proj-card-info"><div class="proj-card-tag">Nybyggeri</div><div class="proj-card-name">Gl. Hareskovvej 275</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="tilbygning">
+    <img src="https://nbark.dk/wp-content/uploads/2024/08/Mylius-Erichsens-alle-41.jpg" alt="Mylius Erichsens Alle 41">
+    <div class="proj-card-info"><div class="proj-card-tag">Tilbygning</div><div class="proj-card-name">Mylius Erichsens Alle 41</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="ombygning">
+    <img src="https://nbark.dk/wp-content/uploads/2024/07/Haredalen-8.jpg" alt="Haredalen 8">
+    <div class="proj-card-info"><div class="proj-card-tag">Ombygning</div><div class="proj-card-name">Haredalen 8</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="tilbygning">
+    <img src="https://nbark.dk/wp-content/uploads/2024/07/Virumvej-144.jpg" alt="Virumvej 144">
+    <div class="proj-card-info"><div class="proj-card-tag">Tilbygning</div><div class="proj-card-name">Virumvej 144</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="nybyggeri">
+    <img src="https://nbark.dk/wp-content/uploads/2024/07/Vilhelm-Bergsoees-alle-15.jpg" alt="Vilhelm Bergsøes Alle 15">
+    <div class="proj-card-info"><div class="proj-card-tag">Nybyggeri</div><div class="proj-card-name">Vilhelm Bergsøes Alle 15</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="ombygning">
+    <img src="https://nbark.dk/wp-content/uploads/2024/07/Helsingevej-18.jpg" alt="Helsingevej 18">
+    <div class="proj-card-info"><div class="proj-card-tag">Ombygning</div><div class="proj-card-name">Helsingevej 18</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="tilbygning">
+    <img src="https://nbark.dk/wp-content/uploads/2023/10/Haagen-Mullers-vej-11.jpg" alt="Haagen Mullers Vej 11">
+    <div class="proj-card-info"><div class="proj-card-tag">Tilbygning</div><div class="proj-card-name">Haagen Mullers Vej 11</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="nybyggeri sommerhus">
+    <img src="https://nbark.dk/wp-content/uploads/2023/10/Pindehuggervang-9.jpg" alt="Pindehuggervang 9">
+    <div class="proj-card-info"><div class="proj-card-tag">Nybyggeri · Sommerhus</div><div class="proj-card-name">Pindehuggervang 9</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="ombygning koekken">
+    <img src="https://nbark.dk/wp-content/uploads/2023/10/Hartmannsvej-6.jpg" alt="Hartmannsvej 6">
+    <div class="proj-card-info"><div class="proj-card-tag">Ombygning · Køkken</div><div class="proj-card-name">Hartmannsvej 6</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="nybyggeri sommerhus">
+    <img src="https://nbark.dk/wp-content/uploads/2013/09/Bursoe-forside.png" alt="Sommerhus i Bursø">
+    <div class="proj-card-info"><div class="proj-card-tag">Nybyggeri · Sommerhus</div><div class="proj-card-name">Sommerhus i Bursø</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="ombygning">
+    <img src="https://nbark.dk/wp-content/uploads/2018/11/Solroedstrand-fors.jpg" alt="Solrød Strand">
+    <div class="proj-card-info"><div class="proj-card-tag">Ombygning · Villa</div><div class="proj-card-name">Solrød Strand</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="tilbygning">
+    <img src="https://nbark.dk/wp-content/uploads/2013/09/virum8-2.jpg" alt="Virum 8">
+    <div class="proj-card-info"><div class="proj-card-tag">Tilbygning · Parcelhus</div><div class="proj-card-name">Virum 8</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="ombygning">
+    <img src="https://nbark.dk/wp-content/uploads/2013/09/Kgl-lyngby-2.jpg" alt="Kgs. Lyngby">
+    <div class="proj-card-info"><div class="proj-card-tag">Renovering</div><div class="proj-card-name">Kgs. Lyngby</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="nybyggeri">
+    <img src="https://nbark.dk/wp-content/uploads/2013/09/Kolding-2.jpg" alt="Kolding">
+    <div class="proj-card-info"><div class="proj-card-tag">Nybyggeri</div><div class="proj-card-name">Kolding</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="tilbygning">
+    <img src="https://nbark.dk/wp-content/uploads/2013/09/virum13-1.jpg" alt="Virum 13">
+    <div class="proj-card-info"><div class="proj-card-tag">Tilbygning</div><div class="proj-card-name">Virum 13</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="kontor">
+    <img src="https://nbark.dk/wp-content/uploads/2020/10/Gehl.png" alt="Gehl Architects">
+    <div class="proj-card-info"><div class="proj-card-tag">Kontor · Erhverv</div><div class="proj-card-name">Gehl Architects</div></div>
+  </a>
+
+  <a href="#" class="proj-card" data-cat="ombygning">
+    <img src="https://nbark.dk/wp-content/uploads/2013/09/Virum7-2.jpg" alt="Virum 7">
+    <div class="proj-card-info"><div class="proj-card-tag">Renovering · Villa</div><div class="proj-card-name">Virum 7</div></div>
+  </a>
+
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <img src="https://nbark.dk/wp-content/themes/NBark_v9/images/logo.png" alt="NB ark" class="footer-logo">
+      <p class="footer-desc">Runebergs alle 10, Baghuset<br>DK-2860 Søborg<br><br>CVR: 31428041</p>
+      <div style="display:flex;gap:12px;margin-top:16px">
+        <a href="#" title="LinkedIn" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);transition:background .2s,color .2s;text-decoration:none" onmouseover="this.style.background='rgba(255,255,255,.2)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.1)';this.style.color='rgba(255,255,255,.6)'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="#" title="Instagram" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);transition:background .2s,color .2s;text-decoration:none" onmouseover="this.style.background='rgba(255,255,255,.2)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.1)';this.style.color='rgba(255,255,255,.6)'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projekter.html">Projekter</a></li>
+        <li><a href="tegnestuen.html">Tegnestuen</a></li>
+        <li><a href="byggeproces.html">Byggeproces</a></li>
+        <li><a href="nyheder.html">Nyheder</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="tel:+4530292722">3029 2722</a></li>
+        <li><a href="mailto:nbark@nbark.dk">nbark@nbark.dk</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Anerkendelse</h4>
+      <ul>
+        <li><a href="#">Renover Prisen 2023</a></li>
+        <li><a href="#">Danske Boligarkitekter</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 NB ark · Alle rettigheder forbeholdes</p>
+    <p>Privatpolitik · Cookiepolitik</p>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('pill', window.scrollY > 80);
+}, { passive: true });
+</script>
+
