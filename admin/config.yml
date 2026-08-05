@@ -1,0 +1,32 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "projekter"
+    label: "Projekter"
+    folder: "content/projekter"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Kategori", name: "category", widget: "string", hint: "Vises som tag under titlen, fx \"Fritidshuse · Nordjylland\"" }
+      - { label: "Hovedbillede", name: "image", widget: "image", hint: "Det store billede øverst på projektsiden" }
+      - { label: "Beskrivelse", name: "description", widget: "text", hint: "Vises under \"Om projektet\"" }
+      - { label: "Lokation", name: "location", widget: "string", required: false }
+      - { label: "Bygherre", name: "client", widget: "string", required: false }
+      - { label: "Størrelse", name: "size", widget: "string", required: false, hint: "fx 250 m²" }
+      - { label: "År", name: "year", widget: "string", required: false }
+      - { label: "Status", name: "status", widget: "string", required: false, hint: "fx Under opførelse, Færdigt" }
+      - { label: "Ingeniør navn", name: "engineer_name", widget: "string", required: false }
+      - { label: "Ingeniør link", name: "engineer_link", widget: "string", required: false }
+      - { label: "Entreprenør navn", name: "contractor_name", widget: "string", required: false }
+      - { label: "Entreprenør link", name: "contractor_link", widget: "string", required: false }
+      - label: "Billedegalleri"
+        name: "gallery"
+        widget: "list"
+        required: false
+        field: { label: "Billede", name: "image", widget: "image" }
